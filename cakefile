@@ -1,0 +1,24 @@
+# staticwatch cakefile
+{spawn, exec} = require 'child_process'
+
+task 'dev', 'Watch source files and build JS & CSS', (options) ->
+	runCommand = (name, args...) ->
+		proc =           spawn name, args
+		proc.stderr.on   'data', (buffer) -> console.log buffer.toString()
+		proc.stdout.on   'data', (buffer) -> console.log buffer.toString()
+		proc.on          'exit', (status) -> process.exit(1) if status isnt 0
+
+	runCommand 'jade', '-w', 'src/markup', '-O', 'public/html', '-P'
+	runCommand 'stylus', '-w', 'src/styles', '-o', 'public/css'
+	runCommand 'coffee', '-wc', '-o', 'public/js/', 'src/scripts/'
+
+	
+task 'min', 'Build minified scripts for production', (options) ->
+	runCommand = (name, args...) ->
+		proc =           spawn name, args
+		proc.stderr.on   'data', (buffer) -> console.log buffer.toString()
+		proc.stdout.on   'data', (buffer) -> console.log buffer.toString()
+		proc.on          'exit', (status) -> process.exit(1) if status isnt 0
+
+	runCommand 'coffee', '-wc', '-o', 'scripts/js/', 'scripts/src/'
+	runCommand 'stylus', '-w', 'styles/src', '-o', 'styles/css'

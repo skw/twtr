@@ -1,0 +1,101 @@
+// --------------------------------------------------
+// - Twitter Sample Application
+// - By Shaun Kirk Wong
+// --------------------------------------------------
+// --------------------------------------------------
+// - Dependencies
+// --------------------------------------------------
+//@import 'lib/normalize.css' // css reset alt
+
+@import 'lib/bootstrap/bootstrap.styl' // bootstrap
+@import 'lib/bootstrap/responsive.styl' // bs resp
+@import 'lib/bg.styl' // base64 bg textures
+
+// --------------------------------------------------
+// - Vars
+// --------------------------------------------------
+// - Colors
+$a_primary = #4d787a
+$a_secondary = #93bcbe
+$highlight = #FF9326
+
+// --------------------------------------------------
+// - Custom classes
+// --------------------------------------------------
+// - image replacement class
+.ir
+	font 0/0 a
+	text-shadow none
+	color transparent
+	
+// --------------------------------------------------
+// - Main Styles
+// --------------------------------------------------
+// - Body
+body
+	width 100%
+	*zoom 1
+	font-family 'Lucida Grande', Verdana , sans-serif
+	font-size 0.8em
+	line-height 1.4em
+	
+	// - Globals
+	a
+		text-decoration none
+	a:hover
+		text-decoration none
+		//
+	
+	// - Header
+	.header
+		background-color #000
+		@extend .noise
+		a 
+			color #CCC 
+		a:hover
+			color #FFF
+		.container
+			.row
+				padding 20px 0
+				.span4
+					header
+						a.logo
+							//
+				.span8
+					text-align right
+	
+	// - Main		
+	.main
+		background-color #FFF
+		.container
+			.row
+					//background-color red
+					padding 20px 0
+					.searchbar
+						//background-color blue
+					.results
+						//background-color green
+	// - Footer
+	.footer
+		background-color #000
+		@extend .noise
+		footer
+			margin-left auto
+			margin-right auto
+			padding 40px 0
+			text-align center
+			color #CCC
+			a 
+				color #CCC
+			a:hover
+				color #FFF
+				
+	// - Scroll to Top
+	#scrolltop
+		position fixed
+		bottom 25%
+		left 0
+		background-color $highlight
+		@extend .noise
+		color #FFF
+		padding 6px 4px
