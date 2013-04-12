@@ -11,6 +11,7 @@ task 'dev', 'Watch source files and build JS & CSS', (options) ->
 	runCommand 'jade', '-w', 'src/markup', '-O', 'public/html', '-P'
 	runCommand 'stylus', '-w', 'src/styles', '-o', 'public/css'
 	runCommand 'coffee', '-wc', '-o', 'public/js/', 'src/scripts/'
+	runCommand 'nodemon', 'local.js'
 
 	
 task 'min', 'Build minified scripts for production', (options) ->
