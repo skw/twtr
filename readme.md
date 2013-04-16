@@ -35,7 +35,7 @@ The following dependencies are required to build/transpile the source:
 
 Once the dependencies are installed we can clone the repo:
 
-	$ git clone whatever.git .
+	$ git clone https://github.com/shaunwong/twtr.git .
 	
 Then install required executables for the cakefile:
 
