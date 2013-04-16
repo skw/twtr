@@ -6223,9 +6223,7 @@ a.badge:focus {
   }
 }
 .noise,
-body .header,
-body .footer,
-body #scrolltop {
+body .header {
   position: relative;
   z-index: 1;
 }
@@ -6257,6 +6255,22 @@ body a {
 }
 body a:hover {
   text-decoration: none;
+}
+body #sleep {
+  background-color: #000;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999999999;
+  display: none;
+}
+body #sleep div {
+  font-size: 10em;
+  font-family: sans-serif;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  margin-top: 33%;
 }
 body .header {
   background-color: #000;
@@ -6294,12 +6308,4 @@ body .footer footer a {
 }
 body .footer footer a:hover {
   color: #fff;
-}
-body #scrolltop {
-  position: fixed;
-  bottom: 25%;
-  left: 0;
-  background-color: #ff9326;
-  color: #fff;
-  padding: 6px 4px;
 }

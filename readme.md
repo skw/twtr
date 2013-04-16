@@ -17,12 +17,14 @@ This is a simple app for reading twitter feeds. Tweets can be filtered via hash 
 	* Bootstrap
 * Scripts
 	* Coffescript
-	* Ender - Requirejs alternative that utilizes a buildscript and microlibs
-	* PouchDB - 
+	* Backbone
+	*	Underscore
+	* Backbone Local-Storage
 
 ## Considerations
 
 * No testing was conducted for the scope of this project. 
+* The localstorage has not been implemented, nor have smarter tweet lookups been written (by date) to avoid repeated lookups.
 
 ## Building/Transpiling from Source
 

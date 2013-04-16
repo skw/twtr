@@ -8,6 +8,10 @@ html
 		//if lt IE
 			script(src='http://html5shiv.googlecode.com/svn/trunk/html5.js')
 	body
+		// SLEEP
+		#sleep
+			div
+				| sleeping...
 		// header
 		.header.noise
 			.container
@@ -27,9 +31,10 @@ html
 			.container
 				.row
 					.span4.searchbar
-						form.form-search
-							input(type='text',placeholder='#').input-medium.search-query
-							button(type='submit').btn
+						form(action='javascript:void(0);').form-search#search
+							| #
+							input(type='text',value='cake').input-medium.search-query#q
+							button(type='button').btn#s
 								| search
 					.span8.results
 						table.table.table-striped
@@ -38,23 +43,21 @@ html
 									th #
 									th id
 									th tweet
-							tbody
+							tbody#results
 								tr
 									td 1
 									td @fat
-									td I like cake
+									td I like #cake
 		// footer
 		.footer.noise
 			footer
 				span
-					a(href='//inke.ca')
+					a(href='//github.com/shaunwong')
 						| © 2013 Shaun Kirk Wong.
-		#scrolltop.noise
-			| &uarr;
-		script(src='../js/lib/ender.min.js')
-		script(src='../js/lib/core.min.js')
+
+		script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+		script(src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js')
+		script(src='http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js')
+		script(src='http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min.js')
 		script(src='../js/app.js')
-		script
-			//Async asset loading
-			//$script('../js/lib/core.min.js','core');
-			//$script('../js/app.js');
+

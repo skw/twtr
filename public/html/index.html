@@ -8,6 +8,10 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   </head>
   <body>
+    <!-- SLEEP-->
+    <div id="sleep">
+      <div>sleeping...</div>
+    </div>
     <!-- header-->
     <div class="header noise">
       <div class="container">
@@ -24,9 +28,9 @@
       <div class="container">
         <div class="row">
           <div class="span4 searchbar">
-            <form class="form-search">
-              <input type="text" placeholder="#" class="input-medium search-query">
-              <button type="submit" class="btn">search</button>
+            <form action="javascript:void(0);" id="search" class="form-search">#
+              <input type="text" value="cake" id="q" class="input-medium search-query">
+              <button type="button" id="s" class="btn">search</button>
             </form>
           </div>
           <div class="span8 results">
@@ -38,11 +42,11 @@
                   <th>tweet</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="results">
                 <tr>
                   <td>1</td>
                   <td>@fat</td>
-                  <td>I like cake</td>
+                  <td>I like #cake</td>
                 </tr>
               </tbody>
             </table>
@@ -52,16 +56,12 @@
     </div>
     <!-- footer-->
     <div class="footer noise">
-      <footer><span><a href="//inke.ca">© 2013 Shaun Kirk Wong.</a></span></footer>
+      <footer><span><a href="//github.com/shaunwong">© 2013 Shaun Kirk Wong.</a></span></footer>
     </div>
-    <div id="scrolltop" class="noise">&uarr;</div>
-    <script src="../js/lib/ender.min.js"></script>
-    <script src="../js/lib/core.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min.js"></script>
     <script src="../js/app.js"></script>
-    <script>
-      //Async asset loading
-      //$script('../js/lib/core.min.js','core');
-      //$script('../js/app.js');
-    </script>
   </body>
 </html>
