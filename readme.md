@@ -2,7 +2,7 @@
 
 This is a simple app for reading twitter feeds. Tweets can be filtered via hash tag.
 
-## Features
+## Functionality
 
 * Tweets refresh every 10 seconds
 * Browser sleeps after no activity
@@ -10,21 +10,21 @@ This is a simple app for reading twitter feeds. Tweets can be filtered via hash 
 ## Stack
 
 * Markup
-	* Jade
+	* [Jade](http://jade-lang.com/)
 * Styles
-	* Stylus
-	* Nib
-	* Bootstrap
+	* [Stylus](http://learnboost.github.io/stylus/)
+	* [Bootstrap](http://twitter.github.io/bootstrap/)
 * Scripts
-	* Coffescript
+	* [Coffescript](http://coffeescript.org/)
 	* Backbone
 	*	Underscore
 	* Backbone Local-Storage
 
 ## Considerations
 
-* No testing was conducted for the scope of this project. 
-* The localstorage has not been implemented, nor have smarter tweet lookups been written (by date) to avoid repeated lookups.
+* no testing was conducted for the scope of this project 
+* lacks error handling
+* localstorage has been implemented, but result view render(s) are based on queries as opposed to what's in local storage.
 
 ## Building/Transpiling from Source
 
