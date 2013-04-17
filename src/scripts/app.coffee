@@ -3,13 +3,17 @@
 # - By Shaun Kirk Wong
 # --------------------------------------------------
 
-#models
+# --------------------------------------------------
+# - models
+# --------------------------------------------------
 Tweet = Backbone.Model.extend()
-
-# collection
+Query = Backbone.Model.extend()
+# --------------------------------------------------
+# - collection
+# --------------------------------------------------
 Tweets = Backbone.Collection.extend(
 	model: Tweet
-	localStorage: new Backbone.LocalStorage 'backbone_tweets'
+	localStorage: new Backbone.LocalStorage 'bb_twts'
 )
 tweets = new Tweets
 tweets.on(
@@ -17,13 +21,18 @@ tweets.on(
 	()->
 		console.log 'tweets synced with local storage'
 )
-# views
+Queries = Backbone.Collection.extend(
+	model: Query
+	localStorage: new Backbone.LocalStorage 'bb_logs'
+)
+# --------------------------------------------------
+# - views
+# --------------------------------------------------
 ResultsView = Backbone.View.extend(
 	el: $('#search')
 	events:
 		'click button#s': 'searchHash'
 		'keypress input#q': 'keyPressed'
-		
 	initialize: ()->
 		this.searchHash()
 	keyPressed: (e)->
@@ -32,44 +41,58 @@ ResultsView = Backbone.View.extend(
 		if e?
 			e.preventDefault()
 		console.clear() # clear console in chrome
-		$('#results').fadeOut()
-		$('#results').empty()
+		#$('#results').fadeOut()
+		$('#results').empty() # clear results
 		q = $('#q').val() # store query string
 		hash = '%23'
 		console.log 'searching: ' + q
 		_this = this
-		$.getJSON 'http://search.twitter.com/search.json?callback=?', 
+		src_url = 'http://search.twitter.com/search.json?callback=?'
+		$.getJSON src_url, 
 			q: hash + q, 
 			(_data)->
 				for i of _data.results
-					_.extend(
+					result = _.pick(
 						_data.results[i]
-						num : parseInt(i) + 1
+						'created_at'
+						'from_user'
+						'from_user_id'
+						'profile_image_url'
+						'source'
+						'text'
 					)
-					tweet = new Tweet _data.results[i]
+					_.extend(
+						result
+						num : parseInt(i) + 1
+						hash : q
+					)
+					tweet = new Tweet result
 					tweets.add tweet
-					console.log _data.results[i]
+					console.log result
 					tweetView = new TweetView(
 						model: tweet
 					)
 					tweetView.render()
-				$('#results').fadeIn()
+				#$('#results').fadeIn()
 
 )
 
 TweetView = Backbone.View.extend(
 	render: ()->
-		result_template = '
-		<tr>
-			<td> <%= num %> </td>
-			<td> <a href="http://twitter.com/<%= from_user %>" title="<%= from_user %>">@<%= from_user %></a> </td>
-			<td> <%= text %> </td>
-		</tr>'
+		this.model.save()
+		result_template =
+			'<tr>
+				<td> <%= num  %> </td>
+				<td> <a href="http://twitter.com/<%= from_user %>" title="<%= from_user %>">@<%= from_user %></a> </td>
+				<td> <%= text %> </td>
+			</tr>'
 		tweet = _.template result_template, this.model.toJSON()
 		$('#results').append(tweet)
 )
-
-# ticker 
+# --------------------------------------------------
+# - ticker
+# --------------------------------------------------
+###
 ticker = {}
 ticker.max = 60000 # 1min
 ticker.tick = 10000 # 10s
@@ -98,8 +121,10 @@ $('#sleep').css(
 	'cursor'
 	'pointer'
 )
-
-# router
+###
+# --------------------------------------------------
+# - router
+# --------------------------------------------------
 Router = Backbone.Router.extend(
 	routes:
 			"": "index"
@@ -111,4 +136,3 @@ appRouter = new Router()
 
 Backbone.history.start()
 
-# scroll

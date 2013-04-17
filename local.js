@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 
 var config = {
-	port: '3000',
+	port: '3032',
 	dir: '/public'
 }
 
